@@ -1,0 +1,12 @@
+data:
+  raw_data_path: data/raw/churn.csv
+
+artifacts:
+  model_path: artifacts/model.pkl
+  preprocessor_path: artifacts/preprocessor.pkl
+
+model:
+  name: logistic_regression
+
+
+
