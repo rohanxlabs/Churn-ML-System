@@ -1,4 +1,5 @@
-Live link : https://churn-ml-system.onrender.com
+Live link : https://churn-ml-system.onreder.com
+App link : https://churn-monitor.lovable.app
 
 📉 Customer Churn Prediction System
 
