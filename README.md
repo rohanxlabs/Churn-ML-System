@@ -168,6 +168,40 @@ curl -X POST http://127.0.0.1:8000/predict \
   }'
 ```
 
+## Deployment
+
+This project is configured for [Render](https://render.com). A `render.yaml`
+and `Procfile` are included so the service starts correctly.
+
+> **Note:** FastAPI is an ASGI framework. It must be served with an ASGI worker
+> (Uvicorn), not Gunicorn's default WSGI worker. The included config uses
+> `gunicorn` with `-k uvicorn.workers.UvicornWorker` and binds to the
+> `$PORT` environment variable that Render provides.
+
+### Deploy with `render.yaml`
+
+1. Push the repository to GitHub.
+2. In Render, create a new **Blueprint** and connect the repo — the
+   `render.yaml` is detected automatically.
+3. The build command installs dependencies and the start command launches the
+   ASGI server.
+
+### Deploy manually (Web Service)
+
+- **Build command:** `pip install -r requirements.txt`
+- **Start command:**
+  ```bash
+  gunicorn app:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT
+  ```
+
+### Local equivalent
+
+```bash
+gunicorn app:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
+# or simply
+python -m uvicorn app:app --host 0.0.0.0 --port 8000
+```
+
 ## How It Works
 
 1. **Data Ingestion** loads the raw CSV defined in `config.yaml`.
