@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run tests
+      run: |
+        python -m pytest tests/ -v --tb=short
+
+    - name: Verify training pipeline
+      run: |
+        python -m src.pipeline.train_pipeline
+
+    - name: Check artifacts generated
+      run: |
+        test -f artifacts/model.pkl
+        test -f artifacts/preprocessor.pkl
+        test -f artifacts/feature_names.pkl
+        test -f artifacts/metrics.json
+        test -f artifacts/validation_report.json
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.11"
+
+    - name: Install ruff
+      run: pip install ruff
+
+    - name: Run ruff check
+      run: ruff check . --select E,F,W --ignore E501
+      continue-on-error: true
+
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build Docker image
+      run: |
+        docker build -t churn-ml-system:test .
+
+    - name: Test Docker image
+      run: |
+        docker run --rm churn-ml-system:test python -c "import app; print('App module imports successfully')"

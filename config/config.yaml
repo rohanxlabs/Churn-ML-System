@@ -2,11 +2,18 @@ data:
   raw_data_path: data/raw/churn.csv
 
 artifacts:
-  model_path: artifacts/model.pkl
-  preprocessor_path: artifacts/preprocessor.pkl
+  dir: artifacts
 
 model:
   name: logistic_regression
+  class_weight: balanced
+
+training:
+  test_size: 0.2
+  random_state: 42
+
+logging:
+  level: INFO
 
 
 

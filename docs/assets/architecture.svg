@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520">
+  <rect width="1100" height="520" fill="#0f172a"/>
+  <text x="550" y="42" fill="#f8fafc" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">Churn ML System Architecture</text>
+  <text x="550" y="72" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="14" text-anchor="middle">Actual repository flow from dataset to FastAPI inference</text>
+
+  <defs>
+    <style>
+      .box { fill:#1e293b; stroke:#38bdf8; stroke-width:2; rx:14; ry:14; }
+      .label { fill:#e2e8f0; font-family:Arial, sans-serif; font-size:16px; text-anchor:middle; }
+      .small { fill:#94a3b8; font-family:Arial, sans-serif; font-size:12px; text-anchor:middle; }
+      .arrow { stroke:#38bdf8; stroke-width:3; fill:none; marker-end:url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#38bdf8"/>
+    </marker>
+  </defs>
+
+  <rect class="box" x="60" y="120" width="150" height="72"/>
+  <text class="label" x="135" y="152">Dataset</text>
+  <text class="small" x="135" y="174">data/raw/churn.csv</text>
+
+  <rect class="box" x="250" y="120" width="150" height="72"/>
+  <text class="label" x="325" y="152">Ingestion</text>
+  <text class="small" x="325" y="174">config-driven CSV load</text>
+
+  <rect class="box" x="440" y="120" width="150" height="72"/>
+  <text class="label" x="515" y="152">Validation</text>
+  <text class="small" x="515" y="174">schema + target + blanks</text>
+
+  <rect class="box" x="630" y="120" width="170" height="72"/>
+  <text class="label" x="715" y="152">Transformation</text>
+  <text class="small" x="715" y="174">numeric coercion + encoding</text>
+
+  <rect class="box" x="840" y="120" width="180" height="72"/>
+  <text class="label" x="930" y="152">Train/Test Split</text>
+  <text class="small" x="930" y="174">stratified holdout</text>
+
+  <rect class="box" x="180" y="290" width="170" height="82"/>
+  <text class="label" x="265" y="324">Model Training</text>
+  <text class="small" x="265" y="346">LogisticRegression</text>
+  <text class="small" x="265" y="364">class_weight=balanced</text>
+
+  <rect class="box" x="410" y="290" width="180" height="82"/>
+  <text class="label" x="500" y="324">Evaluation</text>
+  <text class="small" x="500" y="346">accuracy / precision / recall</text>
+  <text class="small" x="500" y="364">F1 / ROC-AUC / confusion matrix</text>
+
+  <rect class="box" x="650" y="290" width="190" height="82"/>
+  <text class="label" x="745" y="324">Artifacts</text>
+  <text class="small" x="745" y="346">model.pkl / preprocessor.pkl</text>
+  <text class="small" x="745" y="364">feature_names.pkl / metrics.json</text>
+
+  <rect class="box" x="900" y="290" width="150" height="82"/>
+  <text class="label" x="975" y="324">FastAPI</text>
+  <text class="small" x="975" y="346">/health + /predict</text>
+  <text class="small" x="975" y="364">typed request/response</text>
+
+  <rect class="box" x="650" y="420" width="190" height="62"/>
+  <text class="label" x="745" y="452">Prediction Pipeline</text>
+  <text class="small" x="745" y="472">shared preprocessing + probabilities</text>
+
+  <line class="arrow" x1="210" y1="156" x2="250" y2="156"/>
+  <line class="arrow" x1="400" y1="156" x2="440" y2="156"/>
+  <line class="arrow" x1="590" y1="156" x2="630" y2="156"/>
+  <line class="arrow" x1="800" y1="156" x2="840" y2="156"/>
+  <line class="arrow" x1="930" y1="192" x2="930" y2="246"/>
+  <line class="arrow" x1="930" y1="246" x2="265" y2="246"/>
+  <line class="arrow" x1="265" y1="246" x2="265" y2="290"/>
+  <line class="arrow" x1="350" y1="331" x2="410" y2="331"/>
+  <line class="arrow" x1="590" y1="331" x2="650" y2="331"/>
+  <line class="arrow" x1="840" y1="331" x2="900" y2="331"/>
+  <line class="arrow" x1="745" y1="372" x2="745" y2="420"/>
+</svg>

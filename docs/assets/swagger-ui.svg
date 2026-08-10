@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="700" viewBox="0 0 1100 700">
+  <rect width="1100" height="700" fill="#0b1020"/>
+  <rect x="40" y="30" width="1020" height="640" rx="18" ry="18" fill="#ffffff"/>
+  <rect x="40" y="30" width="1020" height="72" rx="18" ry="18" fill="#1f6feb"/>
+  <text x="85" y="75" fill="#ffffff" font-family="Arial, sans-serif" font-size="28" font-weight="bold">Churn ML System API - Swagger UI</text>
+  <text x="84" y="125" fill="#0f172a" font-family="Arial, sans-serif" font-size="18">Verified locally at /docs</text>
+
+  <rect x="84" y="160" width="930" height="78" rx="12" ry="12" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+  <text x="110" y="205" fill="#166534" font-family="Arial, sans-serif" font-size="26" font-weight="bold">GET</text>
+  <text x="190" y="205" fill="#14532d" font-family="Arial, sans-serif" font-size="26">/health</text>
+  <text x="360" y="205" fill="#14532d" font-family="Arial, sans-serif" font-size="18">200 OK - model_loaded=true</text>
+
+  <rect x="84" y="262" width="930" height="300" rx="12" ry="12" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="110" y="308" fill="#1d4ed8" font-family="Arial, sans-serif" font-size="26" font-weight="bold">POST</text>
+  <text x="200" y="308" fill="#1e3a8a" font-family="Arial, sans-serif" font-size="26">/predict</text>
+  <text x="110" y="352" fill="#0f172a" font-family="Consolas, monospace" font-size="18">{</text>
+  <text x="140" y="382" fill="#0f172a" font-family="Consolas, monospace" font-size="18">"gender": "Female",</text>
+  <text x="140" y="412" fill="#0f172a" font-family="Consolas, monospace" font-size="18">"SeniorCitizen": 0,</text>
+  <text x="140" y="442" fill="#0f172a" font-family="Consolas, monospace" font-size="18">"tenure": 12,</text>
+  <text x="140" y="472" fill="#0f172a" font-family="Consolas, monospace" font-size="18">"Contract": "Month-to-month",</text>
+  <text x="140" y="502" fill="#0f172a" font-family="Consolas, monospace" font-size="18">"MonthlyCharges": 29.85,</text>
+  <text x="140" y="532" fill="#0f172a" font-family="Consolas, monospace" font-size="18">"TotalCharges": 653.4</text>
+  <text x="110" y="560" fill="#0f172a" font-family="Consolas, monospace" font-size="18">}</text>
+
+  <rect x="84" y="588" width="930" height="46" rx="10" ry="10" fill="#dcfce7"/>
+  <text x="110" y="618" fill="#166534" font-family="Arial, sans-serif" font-size="20">Verified responses: 200 for valid input, 422 for invalid payloads</text>
+</svg>

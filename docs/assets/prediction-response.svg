@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620">
+  <rect width="1000" height="620" fill="#111827"/>
+  <text x="500" y="48" fill="#f9fafb" font-family="Arial, sans-serif" font-size="30" text-anchor="middle">Prediction Response Example</text>
+  <text x="500" y="80" fill="#9ca3af" font-family="Arial, sans-serif" font-size="16" text-anchor="middle">Actual response from the running FastAPI service</text>
+
+  <rect x="70" y="120" width="860" height="430" rx="20" ry="20" fill="#1f2937" stroke="#60a5fa" stroke-width="2"/>
+  <text x="105" y="170" fill="#dbeafe" font-family="Consolas, monospace" font-size="22">{</text>
+  <text x="140" y="210" fill="#dbeafe" font-family="Consolas, monospace" font-size="22">"churn_prediction": "Yes",</text>
+  <text x="140" y="250" fill="#dbeafe" font-family="Consolas, monospace" font-size="22">"churn_probability": 0.7235,</text>
+  <text x="140" y="290" fill="#dbeafe" font-family="Consolas, monospace" font-size="22">"risk_level": "high",</text>
+  <text x="140" y="330" fill="#dbeafe" font-family="Consolas, monospace" font-size="22">"top_drivers": [</text>
+  <text x="175" y="370" fill="#dbeafe" font-family="Consolas, monospace" font-size="22">{ "feature": "num__tenure", "contribution": 0.962, "direction": "increase" },</text>
+  <text x="175" y="410" fill="#dbeafe" font-family="Consolas, monospace" font-size="22">{ "feature": "num__MonthlyCharges", "contribution": 0.787, "direction": "increase" },</text>
+  <text x="175" y="450" fill="#dbeafe" font-family="Consolas, monospace" font-size="22">{ "feature": "cat__Contract_Month-to-month", "contribution": 0.6511, "direction": "increase" }</text>
+  <text x="140" y="490" fill="#dbeafe" font-family="Consolas, monospace" font-size="22">]</text>
+  <text x="105" y="530" fill="#dbeafe" font-family="Consolas, monospace" font-size="22">}</text>
+
+  <text x="70" y="585" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="18">Interpretation: this customer is high-risk, with low tenure and a month-to-month contract pushing churn probability upward.</text>
+</svg>

@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  churn-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: churn-ml-system
+    ports:
+      - "8000:8000"
+    environment:
+      - CHURN_CONFIG_PATH=config/config.yaml
+      - CHURN_ARTIFACT_DIR=artifacts
+      - CHURN_LOG_LEVEL=INFO
+    volumes:
+      # Mount artifacts directory to persist trained models
+      - ./artifacts:/app/artifacts
+      # Mount data directory for training
+      - ./data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    restart: unless-stopped
+
+networks:
+  default:
+    name: churn-ml-network
